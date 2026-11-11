@@ -53,10 +53,40 @@ src/
   main.js        ponto de entrada
   App.vue        componente raiz
   style.css      estilos globais
-  views/         uma tela por arquivo (Hoje, Metas, Grupo, Retrospectiva...)
+  views/         uma tela por arquivo (Hoje, Metas, Retrospectiva...)
   components/    peças reaproveitadas entre telas
   data/mock.js   dados de mentira usados no lugar do banco
 ```
 
 Os nomes dos dados em `src/data/mock.js` seguem as entidades do DC-ENTIDADE
 (E-Usuario, E-Registro, E-Meta...), para o código bater com a modelagem.
+
+## Registrando o progresso
+
+O [`PROGRESSO.md`](PROGRESSO.md) diz o que já está feito e o que foi começado mas ainda
+falta terminar (com o que falta). Quem mexer em algo atualiza o arquivo.
+
+## Mensagens de commit
+
+Usamos um prefixo no início de cada commit para facilitar a leitura do histórico:
+
+| Prefixo | Quando usar |
+|---|---|
+| `feat` | adiciona uma nova funcionalidade |
+| `fix` | corrige um erro ou bug |
+| `docs` | mexe só na documentação (README, PROGRESSO.md...) |
+| `style` | formatação (espaços, recuos, ponto e vírgula) que não muda a lógica |
+| `refactor` | reescreve ou melhora o código sem adicionar função nem corrigir bug |
+| `test` | cria ou ajusta testes |
+| `chore` | tarefas, dependências ou ferramentas que não mudam o código do app |
+| `perf` | melhora o desempenho |
+| `build` | arquivos de build, empacotamento ou dependências externas |
+
+Exemplos:
+
+```
+feat: cria tela de registro de sono
+fix: corrige soma da pontuação do dia
+docs: atualiza PROGRESSO.md
+chore: cria projeto Ritmo com Vue + Vite como PWA
+```
