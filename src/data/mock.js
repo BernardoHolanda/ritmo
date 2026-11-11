@@ -3,6 +3,6 @@
 
 export const usuario = {
   idUsuario: 1,
-  nome: 'Bernardo',
-  email: 'bernardo@exemplo.com',
+  nome: 'Facudilson da Silva',
+  email: 'facudilsondasilva@exemplo.com',
 }
