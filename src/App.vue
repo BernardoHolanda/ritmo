@@ -1,16 +1,11 @@
 <script setup>
-import { usuario } from './data/mock.js'
+import { useRoute } from 'vue-router'
+import BarraNavegacao from './components/BarraNavegacao.vue'
+
+const route = useRoute()
 </script>
 
 <template>
-  <main class="app">
-    <h1>Ritmo</h1>
-    <p>Olá, {{ usuario.nome }}! O app começa aqui.</p>
-  </main>
+  <RouterView />
+  <BarraNavegacao v-if="!route.meta.publica" />
 </template>
-
-<style scoped>
-.app {
-  padding: 24px 16px;
-}
-</style>
