@@ -52,14 +52,22 @@ public/          ícones e arquivos servidos como estão
 src/
   main.js        ponto de entrada
   App.vue        componente raiz
+  router.js      rotas das telas
   style.css      estilos globais
-  views/         uma tela por arquivo (Hoje, Metas, Retrospectiva...)
+  views/         uma tela por arquivo (Hoje, Metas, Registrar...)
   components/    peças reaproveitadas entre telas
+  controle/      regras de cada caso de uso, um arquivo por classe C- do modelo
+  store/         onde os dados ficam guardados (localStorage do navegador)
+  utils/         funções de data
   data/mock.js   dados de mentira usados no lugar do banco
 ```
 
 Os nomes dos dados em `src/data/mock.js` seguem as entidades do DC-ENTIDADE
 (E-Usuario, E-Registro, E-Meta...), para o código bater com a modelagem.
+
+Os dados ficam salvos no navegador. Para voltar aos dados de exemplo, apague
+a chave `ritmo:dados` do localStorage (F12 > Application > Local Storage).
+Conta de teste: `facudilsondasilva@exemplo.com`, senha `123456`.
 
 ## Registrando o progresso
 
