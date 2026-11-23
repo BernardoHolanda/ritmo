@@ -59,7 +59,8 @@ src/
   style.css      estilos globais
   views/         uma tela por arquivo, com o nome da classe F- do Astah (F-TelaLogin.vue...)
   components/    peças reaproveitadas entre telas
-  controle/      regras de cada caso de uso, com o nome da classe C- do Astah (C-Metas.js...)
+  controle/      coordena cada caso de uso, com o nome da classe C- do Astah (C-Metas.js...)
+  entidades/     dados e regras de negócio, com o nome da classe E- do Astah (E-Meta.js...)
   store/         estado do app e a ligação com o arquivo de dados
   utils/         funções de data
   data/
@@ -67,8 +68,10 @@ src/
     seed.js        dados iniciais: só o usuário de teste
 ```
 
-Os nomes dos campos seguem as entidades do DC-ENTIDADE (E-Usuario, E-Registro, E-Meta...),
-para o código bater com a modelagem.
+O código segue a divisão fronteira, controle e entidade do modelo: a tela (F-) só recebe
+os dados e mostra o resultado, o controle (C-) coordena o caso de uso, e as regras ficam
+nas entidades (E-), como o cálculo de pontos em E-RegraPontuacao e a geração das metas
+em E-Meta. Os nomes das funções seguem as operações do Astah.
 
 ## Dados
 
