@@ -3,8 +3,8 @@ import { ref } from 'vue'
 import BarraProgresso from '../components/BarraProgresso.vue'
 import CabecalhoTela from '../components/CabecalhoTela.vue'
 import { categorias } from '../data/mock.js'
-import { consultarMetas } from '../controle/metas.js'
-import { objetivoAtivo } from '../controle/objetivo.js'
+import { consultarMetas } from '../controle/C-Metas.js'
+import { objetivoAtivo } from '../controle/C-Objetivo.js'
 import { formatarData } from '../utils/datas.js'
 
 const metas = ref(consultarMetas())

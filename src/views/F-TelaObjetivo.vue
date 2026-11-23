@@ -2,8 +2,8 @@
 import { ref } from 'vue'
 import CabecalhoTela from '../components/CabecalhoTela.vue'
 import { tiposObjetivo } from '../data/mock.js'
-import { definirObjetivo, objetivoAtivo } from '../controle/objetivo.js'
-import { consultarMetas } from '../controle/metas.js'
+import { definirObjetivo, objetivoAtivo } from '../controle/C-Objetivo.js'
+import { consultarMetas } from '../controle/C-Metas.js'
 
 const metas = ref(objetivoAtivo.value ? consultarMetas() : null)
 const acabouDeDefinir = ref(false)

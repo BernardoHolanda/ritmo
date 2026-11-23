@@ -2,8 +2,8 @@ import { categorias } from '../data/mock.js'
 import { estado, novoId } from '../store/estado.js'
 import { atualizarProgresso, gerarMetas } from '../store/regras.js'
 import { dataISO } from '../utils/datas.js'
-import { historicoRecente, objetivoAtivo } from './objetivo.js'
-import { listarPorPeriodo } from './registros.js'
+import { historicoRecente, objetivoAtivo } from './C-Objetivo.js'
+import { listarPorPeriodo } from '../store/registros.js'
 
 const ordem = Object.keys(categorias)
 

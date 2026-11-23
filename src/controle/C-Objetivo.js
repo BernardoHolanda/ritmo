@@ -3,8 +3,8 @@ import { tiposObjetivo } from '../data/mock.js'
 import { estado, novoId } from '../store/estado.js'
 import { gerarMetas } from '../store/regras.js'
 import { adicionarDias, dataISO } from '../utils/datas.js'
-import { listarPorPeriodo } from './registros.js'
-import { usuarioAtual } from './usuario.js'
+import { listarPorPeriodo } from '../store/registros.js'
+import { usuarioAtual } from './C-Autenticacao.js'
 
 export const objetivoAtivo = computed(
   () => estado.objetivos.find((o) => o.ativo && o.idUsuario === usuarioAtual.value?.idUsuario) ?? null,

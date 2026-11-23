@@ -2,7 +2,7 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import CabecalhoTela from '../components/CabecalhoTela.vue'
-import { cadastrar } from '../controle/usuario.js'
+import { cadastrar } from '../controle/C-CadastroUsuario.js'
 
 const router = useRouter()
 const dados = reactive({ nome: '', email: '', senha: '', dataNascimento: '' })

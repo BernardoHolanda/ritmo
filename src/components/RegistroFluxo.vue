@@ -1,10 +1,10 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { registrar, validarCamposEssenciais } from '../controle/registros.js'
 import CabecalhoTela from './CabecalhoTela.vue'
 
 const props = defineProps({
-  categoria: { type: String, required: true },
+  // módulo C-Registro* da tela: precisa ter validarCamposEssenciais(dados) e registrar(dados)
+  controle: { type: Object, required: true },
   titulo: { type: String, required: true },
   cor: { type: String, required: true },
   dados: { type: Object, required: true },
@@ -19,12 +19,12 @@ const resultado = ref(null)
 watch(() => props.dados, () => (erro.value = ''), { deep: true })
 
 function revisar() {
-  erro.value = validarCamposEssenciais(props.categoria, props.dados)
+  erro.value = props.controle.validarCamposEssenciais(props.dados)
   if (!erro.value) etapa.value = 'revisao'
 }
 
 function confirmar() {
-  const retorno = registrar(props.categoria, props.dados)
+  const retorno = props.controle.registrar(props.dados)
   if (retorno.erro) {
     erro.value = retorno.erro
     etapa.value = 'preenchimento'

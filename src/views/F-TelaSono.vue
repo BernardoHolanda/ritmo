@@ -2,6 +2,7 @@
 import { computed, reactive } from 'vue'
 import OpcoesEscolha from '../components/OpcoesEscolha.vue'
 import RegistroFluxo from '../components/RegistroFluxo.vue'
+import * as controle from '../controle/C-RegistroSono.js'
 import { categorias, qualidadesSono } from '../data/mock.js'
 
 const vazio = () => ({ duracaoHoras: '', qualidade: null, horaDormir: '', horaAcordar: '', observacao: '' })
@@ -24,7 +25,7 @@ const resumo = computed(() => {
 
 <template>
   <RegistroFluxo
-    categoria="sono"
+    :controle="controle"
     :titulo="categorias.sono.titulo"
     :cor="categorias.sono.cor"
     :dados="dados"

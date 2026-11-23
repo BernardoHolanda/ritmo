@@ -2,8 +2,8 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { usuarios } from '../data/mock.js'
-import { objetivoAtivo } from '../controle/objetivo.js'
-import { autenticar } from '../controle/usuario.js'
+import { objetivoAtivo } from '../controle/C-Objetivo.js'
+import { autenticar } from '../controle/C-Autenticacao.js'
 
 const router = useRouter()
 const credenciais = reactive({ email: '', senha: '' })

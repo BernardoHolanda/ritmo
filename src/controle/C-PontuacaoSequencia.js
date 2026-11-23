@@ -1,6 +1,6 @@
 import { estado } from '../store/estado.js'
 import { avancarSequencia, calcularPontos, sequenciaInterrompida } from '../store/regras.js'
-import { usuarioAtual } from './usuario.js'
+import { usuarioAtual } from './C-Autenticacao.js'
 
 function dadosDoUsuario(idUsuario) {
   return {

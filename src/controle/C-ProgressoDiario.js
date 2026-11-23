@@ -1,7 +1,7 @@
 import { categorias } from '../data/mock.js'
 import { dataISO } from '../utils/datas.js'
-import { consultarMetas } from './metas.js'
-import { listarPorPeriodo } from './registros.js'
+import { consultarMetas } from './C-Metas.js'
+import { listarPorPeriodo } from '../store/registros.js'
 
 const alvoDiarioPadrao = { atividade: 30, sono: 7, alimentacao: 3, humor: 1 }
 

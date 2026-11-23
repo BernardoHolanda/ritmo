@@ -2,6 +2,7 @@
 import { computed, reactive } from 'vue'
 import OpcoesEscolha from '../components/OpcoesEscolha.vue'
 import RegistroFluxo from '../components/RegistroFluxo.vue'
+import * as controle from '../controle/C-RegistroAtividadeFisica.js'
 import { categorias, intensidades, modalidades } from '../data/mock.js'
 
 const vazio = () => ({ modalidade: null, duracaoMin: '', intensidade: null, observacao: '' })
@@ -21,7 +22,7 @@ const resumo = computed(() => [
 
 <template>
   <RegistroFluxo
-    categoria="atividade"
+    :controle="controle"
     :titulo="categorias.atividade.titulo"
     :cor="categorias.atividade.cor"
     :dados="dados"

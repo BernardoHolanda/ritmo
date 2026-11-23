@@ -3,8 +3,8 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import BarraProgresso from '../components/BarraProgresso.vue'
 import CabecalhoTela from '../components/CabecalhoTela.vue'
-import { calcularProgresso } from '../controle/progresso.js'
-import { encerrarSessao, usuarioAtual } from '../controle/usuario.js'
+import { calcularProgresso } from '../controle/C-ProgressoDiario.js'
+import { encerrarSessao, usuarioAtual } from '../controle/C-Autenticacao.js'
 
 const router = useRouter()
 const progresso = ref(calcularProgresso())
