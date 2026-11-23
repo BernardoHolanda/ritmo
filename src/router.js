@@ -7,6 +7,7 @@ const routes = [
   { path: '/', component: () => import('./views/F-PainelProgresso.vue') },
   { path: '/objetivo', component: () => import('./views/F-TelaObjetivo.vue') },
   { path: '/metas', component: () => import('./views/F-TelaMetas.vue') },
+  { path: '/historico', component: () => import('./views/F-TelaHistorico.vue') },
   { path: '/registrar', component: () => import('./views/RegistrarView.vue') },
   { path: '/registrar/atividade', component: () => import('./views/F-TelaAtividadeFisica.vue') },
   { path: '/registrar/sono', component: () => import('./views/F-TelaSono.vue') },
