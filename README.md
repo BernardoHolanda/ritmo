@@ -1,7 +1,7 @@
 # Ritmo
 
 Aplicativo web (PWA) que reúne exercício, alimentação e descanso num só lugar.
-Prova de conceito da disciplina MPS: só front-end, com dados de mentira (sem banco de dados).
+Prova de conceito da disciplina MPS: sem banco de dados, os dados ficam num arquivo de texto (`dados/ritmo.json`).
 
 Feito com [Vue 3](https://vuejs.org/) + [Vite](https://vite.dev/) + [vite-plugin-pwa](https://vite-pwa-org.netlify.app/).
 
@@ -44,29 +44,45 @@ com HTTPS; pela rede local dá para ver e testar as telas normalmente.
 | `npm run dev` | servidor de desenvolvimento |
 | `npm run build` | gera a versão final em `dist/` |
 | `npm run preview` | serve a versão de `dist/` para conferir antes de publicar |
+| `npm run seed` | apaga os dados e recria `dados/ritmo.json` só com o usuário de teste |
 
 ## Estrutura
 
 ```
 public/          ícones e arquivos servidos como estão
+servidor/        lê e grava dados/ritmo.json (/api/dados) e o script do seed
+dados/ritmo.json registro de dados do app (criado sozinho, fica fora do git)
 src/
   main.js        ponto de entrada
   App.vue        componente raiz
   router.js      rotas das telas
   style.css      estilos globais
-  views/         uma tela por arquivo (Hoje, Metas, Registrar...)
+  views/         uma tela por arquivo, com o nome da classe F- do Astah (F-TelaLogin.vue...)
   components/    peças reaproveitadas entre telas
-  controle/      regras de cada caso de uso, um arquivo por classe C- do modelo
-  store/         onde os dados ficam guardados (localStorage do navegador)
+  controle/      regras de cada caso de uso, com o nome da classe C- do Astah (C-Metas.js...)
+  store/         estado do app e a ligação com o arquivo de dados
   utils/         funções de data
-  data/mock.js   dados de mentira usados no lugar do banco
+  data/
+    constantes.js  listas fixas (tipos de objetivo, regras de pontuação, opções dos formulários)
+    seed.js        dados iniciais: só o usuário de teste
 ```
 
-Os nomes dos dados em `src/data/mock.js` seguem as entidades do DC-ENTIDADE
-(E-Usuario, E-Registro, E-Meta...), para o código bater com a modelagem.
+Os nomes dos campos seguem as entidades do DC-ENTIDADE (E-Usuario, E-Registro, E-Meta...),
+para o código bater com a modelagem.
 
-Os dados ficam salvos no navegador. Para voltar aos dados de exemplo, apague
-a chave `ritmo:dados` do localStorage (F12 > Application > Local Storage).
+## Dados
+
+Tudo o que o app guarda (usuários, objetivos, metas, registros, pontuação) fica em
+`dados/ritmo.json`, um arquivo de texto que dá para abrir e ler. Quem lê e grava é o
+próprio servidor do Vite, então os dados só são salvos com `npm run dev` ou
+`npm run preview` rodando. Só o login fica no navegador.
+
+Se o arquivo não existir, ele é criado com o seed. Para apagar tudo e voltar ao começo:
+
+```bash
+npm run seed
+```
+
 Conta de teste: `facudilsondasilva@exemplo.com`, senha `123456`.
 
 ## Registrando o progresso
