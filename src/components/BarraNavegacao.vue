@@ -2,11 +2,18 @@
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const ativo = (para) => (para === '/' ? route.path === '/' : route.path.startsWith(para))
+const ativo = (para) => {
+  if (para === '/') return route.path === '/'
+  // a retrospectiva faz parte do histórico
+  if (para === '/historico') return route.path === '/historico' || route.path === '/retrospectiva'
+  return route.path.startsWith(para)
+}
 const itens = [
   { para: '/', rotulo: 'Hoje', icone: '◐' },
   { para: '/registrar', rotulo: 'Registrar', icone: '＋' },
+  { para: '/historico', rotulo: 'Histórico', icone: '☰' },
   { para: '/metas', rotulo: 'Metas', icone: '◎' },
+  { para: '/pontuacao', rotulo: 'Pontos', icone: '★' },
   { para: '/objetivo', rotulo: 'Objetivo', icone: '⚑' },
 ]
 </script>
@@ -36,7 +43,7 @@ const itens = [
   width: 100%;
   max-width: 480px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
   background: var(--superficie);
   border-top: 1px solid var(--linha);
@@ -50,7 +57,7 @@ const itens = [
   padding: 6px 0;
   border-radius: 12px;
   color: var(--tinta-3);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   text-decoration: none;
 }
