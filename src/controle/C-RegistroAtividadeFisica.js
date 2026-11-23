@@ -1,15 +1,16 @@
-import { salvarRegistro } from '../store/registros.js'
+import * as Registro from '../entidades/E-Registro.js'
+import * as RegistroAtividadeFisica from '../entidades/E-RegistroAtividadeFisica.js'
+import { usuarioAtual } from './C-Autenticacao.js'
+import { atualizar } from './C-PontuacaoSequencia.js'
 
-export function validarCamposEssenciais(d) {
-  if (!d.modalidade) return 'Escolha a modalidade.'
-  if (!(Number(d.duracaoMin) > 0 && Number(d.duracaoMin) <= 600)) return 'Informe a duração em minutos (até 600).'
-  if (!d.intensidade) return 'Escolha a intensidade.'
-  return ''
+export function validarCamposEssenciais(dados) {
+  return RegistroAtividadeFisica.validarCamposEssenciais(dados)
 }
 
-export function registrar(d) {
-  const erro = validarCamposEssenciais(d)
+export function registrar(dados) {
+  const erro = validarCamposEssenciais(dados)
   if (erro) return { erro }
-  const campos = { modalidade: d.modalidade, duracaoMin: Number(d.duracaoMin), intensidade: d.intensidade }
-  return salvarRegistro('atividade', campos, d.observacao)
+  const campos = RegistroAtividadeFisica.campos(dados)
+  const registro = Registro.criar(RegistroAtividadeFisica.categoria, usuarioAtual.value.idUsuario, campos, dados.observacao)
+  return { registro, ...atualizar(registro) }
 }

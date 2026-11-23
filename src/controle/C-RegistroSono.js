@@ -1,19 +1,16 @@
-import { salvarRegistro } from '../store/registros.js'
+import * as Registro from '../entidades/E-Registro.js'
+import * as RegistroSono from '../entidades/E-RegistroSono.js'
+import { usuarioAtual } from './C-Autenticacao.js'
+import { atualizar } from './C-PontuacaoSequencia.js'
 
-export function validarCamposEssenciais(d) {
-  if (!(Number(d.duracaoHoras) > 0 && Number(d.duracaoHoras) <= 16)) return 'Informe quantas horas você dormiu (até 16).'
-  if (!d.qualidade) return 'Escolha como foi a qualidade do sono.'
-  return ''
+export function validarCamposEssenciais(dados) {
+  return RegistroSono.validarCamposEssenciais(dados)
 }
 
-export function registrar(d) {
-  const erro = validarCamposEssenciais(d)
+export function registrar(dados) {
+  const erro = validarCamposEssenciais(dados)
   if (erro) return { erro }
-  const campos = {
-    duracaoHoras: Number(d.duracaoHoras),
-    qualidade: Number(d.qualidade),
-    horaDormir: d.horaDormir || '',
-    horaAcordar: d.horaAcordar || '',
-  }
-  return salvarRegistro('sono', campos, d.observacao)
+  const campos = RegistroSono.campos(dados)
+  const registro = Registro.criar(RegistroSono.categoria, usuarioAtual.value.idUsuario, campos, dados.observacao)
+  return { registro, ...atualizar(registro) }
 }

@@ -1,4 +1,5 @@
 import { computed } from 'vue'
+import * as Usuario from '../entidades/E-Usuario.js'
 import { estado } from '../store/estado.js'
 import { dataHoraISO } from '../utils/datas.js'
 
@@ -15,8 +16,8 @@ export function encerrarSessao() {
 }
 
 export function autenticar(email, senha) {
-  const usuario = estado.usuarios.find((u) => u.email === email?.trim().toLowerCase() && u.senha === senha)
-  if (!usuario) return { erro: 'E-mail ou senha incorretos.' }
+  const usuario = Usuario.buscarPorEmail(email)
+  if (!Usuario.validarCredenciais(usuario, senha)) return { erro: 'E-mail ou senha incorretos.' }
   iniciarSessao(usuario)
   return { usuario }
 }

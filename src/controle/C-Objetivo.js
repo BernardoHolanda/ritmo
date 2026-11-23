@@ -1,43 +1,30 @@
 import { computed } from 'vue'
-import { tiposObjetivo } from '../data/constantes.js'
-import { estado, novoId } from '../store/estado.js'
-import { gerarMetas } from '../store/regras.js'
+import * as Meta from '../entidades/E-Meta.js'
+import * as Objetivo from '../entidades/E-Objetivo.js'
+import * as Registro from '../entidades/E-Registro.js'
 import { adicionarDias, dataISO } from '../utils/datas.js'
-import { listarPorPeriodo } from '../store/registros.js'
 import { usuarioAtual } from './C-Autenticacao.js'
 
-export const objetivoAtivo = computed(
-  () => estado.objetivos.find((o) => o.ativo && o.idUsuario === usuarioAtual.value?.idUsuario) ?? null,
-)
+export const objetivoAtivo = computed(() => Objetivo.obterAtivo(usuarioAtual.value?.idUsuario))
 
+// Registros das últimas 4 semanas, usados para ajustar o alvo das metas.
 export function historicoRecente(hoje = new Date()) {
-  return listarPorPeriodo(dataISO(adicionarDias(hoje, -28)), dataISO(adicionarDias(hoje, -1)))
+  const inicio = dataISO(adicionarDias(hoje, -28))
+  const fim = dataISO(adicionarDias(hoje, -1))
+  return Registro.listarPorPeriodo(inicio, fim, usuarioAtual.value?.idUsuario)
 }
 
 export function desativarObjetivoAnterior() {
   const anterior = objetivoAtivo.value
   if (!anterior) return
-  anterior.ativo = false
-  estado.metas
-    .filter((m) => m.idObjetivo === anterior.idObjetivo && m.status === 'ativa')
-    .forEach((m) => {
-      m.status = 'cancelada'
-    })
+  Objetivo.desativar(anterior)
+  Meta.listarPorObjetivo(anterior.idObjetivo).forEach(Meta.cancelar)
 }
 
 export function definirObjetivo(tipo) {
   if (objetivoAtivo.value?.tipo === tipo) return objetivoAtivo.value
   desativarObjetivoAnterior()
-  const objetivo = {
-    idObjetivo: novoId(),
-    idUsuario: usuarioAtual.value.idUsuario,
-    tipo,
-    descricao: tiposObjetivo.find((t) => t.tipo === tipo).titulo,
-    dataDefinicao: dataISO(),
-    ativo: true,
-  }
-  estado.objetivos.push(objetivo)
-  const metas = gerarMetas(objetivo, historicoRecente())
-  estado.metas.push(...metas.map((m) => ({ idMeta: novoId(), ...m })))
+  const objetivo = Objetivo.criar(usuarioAtual.value.idUsuario, tipo)
+  Meta.gerar(objetivo, historicoRecente())
   return objetivo
 }

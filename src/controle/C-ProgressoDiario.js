@@ -1,7 +1,8 @@
 import { categorias } from '../data/constantes.js'
+import * as Registro from '../entidades/E-Registro.js'
 import { dataISO } from '../utils/datas.js'
+import { usuarioAtual } from './C-Autenticacao.js'
 import { consultarMetas } from './C-Metas.js'
-import { listarPorPeriodo } from '../store/registros.js'
 
 const alvoDiarioPadrao = { atividade: 30, sono: 7, alimentacao: 3, humor: 1 }
 
@@ -13,7 +14,7 @@ function alvoDiario(categoria, metas) {
 
 export function consolidarPorCategoria(registrosDoDia, metas) {
   return Object.entries(categorias).map(([categoria, info]) => {
-    const registros = registrosDoDia.filter((r) => r.categoria === categoria)
+    const registros = Registro.filtrarPorCategoria(registrosDoDia, categoria)
     const alvo = alvoDiario(categoria, metas)
     let valor = 0
     let unidade = ''
@@ -45,5 +46,5 @@ export function consolidarPorCategoria(registrosDoDia, metas) {
 
 export function calcularProgresso(data = new Date()) {
   const dia = dataISO(data)
-  return consolidarPorCategoria(listarPorPeriodo(dia, dia), consultarMetas(data) ?? [])
+  return consolidarPorCategoria(Registro.listarPorPeriodo(dia, dia, usuarioAtual.value?.idUsuario), consultarMetas(data) ?? [])
 }

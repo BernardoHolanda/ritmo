@@ -1,25 +1,22 @@
-import { estado } from '../store/estado.js'
-import { avancarSequencia, calcularPontos, sequenciaInterrompida } from '../store/regras.js'
+import * as Pontuacao from '../entidades/E-Pontuacao.js'
+import * as RegraPontuacao from '../entidades/E-RegraPontuacao.js'
+import * as Sequencia from '../entidades/E-Sequencia.js'
 import { usuarioAtual } from './C-Autenticacao.js'
 
-function dadosDoUsuario(idUsuario) {
-  return {
-    pontuacao: estado.pontuacoes.find((p) => p.idUsuario === idUsuario),
-    sequencia: estado.sequencias.find((s) => s.idUsuario === idUsuario),
-  }
-}
-
+// Chamado depois de cada registro salvo: soma os pontos e avança a sequência.
 export function atualizar(registro) {
-  const { pontuacao, sequencia } = dadosDoUsuario(registro.idUsuario)
-  const pontos = calcularPontos(registro, estado.regras)
-  pontuacao.total += pontos
-  pontuacao.ultimaAtualizacao = registro.dataHora
-  Object.assign(sequencia, avancarSequencia(sequencia, registro.dataHora.slice(0, 10)))
+  const pontuacao = Pontuacao.doUsuario(registro.idUsuario)
+  const sequencia = Sequencia.doUsuario(registro.idUsuario)
+  const pontos = RegraPontuacao.calcularPontos(registro)
+  Pontuacao.adicionarPontos(pontuacao, pontos, registro.dataHora)
+  Sequencia.atualizar(sequencia, registro.dataHora.slice(0, 10))
+  registro.status = 'contabilizado'
   return { pontos, sequencia: sequencia.atual }
 }
 
 export function consultar(idUsuario = usuarioAtual.value?.idUsuario) {
-  const { pontuacao, sequencia } = dadosDoUsuario(idUsuario)
-  if (sequenciaInterrompida(sequencia)) sequencia.atual = 0
+  const pontuacao = Pontuacao.doUsuario(idUsuario)
+  const sequencia = Sequencia.doUsuario(idUsuario)
+  Sequencia.interromper(sequencia)
   return { pontos: pontuacao.total, sequencia: sequencia.atual, recorde: sequencia.recorde }
 }
