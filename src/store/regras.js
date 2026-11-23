@@ -1,4 +1,4 @@
-import { modelosMeta } from '../data/mock.js'
+import { modelosMeta } from '../data/constantes.js'
 import { adicionarDias, dataISO, deISO, fimDaSemana, inicioDaSemana } from '../utils/datas.js'
 
 export function calcularPontos(registro, regras) {

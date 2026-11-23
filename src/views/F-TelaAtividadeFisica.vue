@@ -3,7 +3,7 @@ import { computed, reactive } from 'vue'
 import OpcoesEscolha from '../components/OpcoesEscolha.vue'
 import RegistroFluxo from '../components/RegistroFluxo.vue'
 import * as controle from '../controle/C-RegistroAtividadeFisica.js'
-import { categorias, intensidades, modalidades } from '../data/mock.js'
+import { categorias, intensidades, modalidades } from '../data/constantes.js'
 
 const vazio = () => ({ modalidade: null, duracaoMin: '', intensidade: null, observacao: '' })
 const dados = reactive(vazio())

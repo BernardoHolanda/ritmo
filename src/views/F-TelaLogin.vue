@@ -1,14 +1,14 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { usuarios } from '../data/mock.js'
+import { usuarioDeTeste } from '../data/seed.js'
 import { objetivoAtivo } from '../controle/C-Objetivo.js'
 import { autenticar } from '../controle/C-Autenticacao.js'
 
 const router = useRouter()
 const credenciais = reactive({ email: '', senha: '' })
 const erro = ref('')
-const exemplo = usuarios[0]
+const exemplo = usuarioDeTeste
 
 function entrar() {
   const retorno = autenticar(credenciais.email, credenciais.senha)

@@ -1,4 +1,4 @@
-import { categorias } from '../data/mock.js'
+import { categorias } from '../data/constantes.js'
 import { dataISO } from '../utils/datas.js'
 import { consultarMetas } from './C-Metas.js'
 import { listarPorPeriodo } from '../store/registros.js'

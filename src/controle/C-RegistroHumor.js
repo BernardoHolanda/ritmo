@@ -1,4 +1,4 @@
-import { niveisHumor } from '../data/mock.js'
+import { niveisHumor } from '../data/constantes.js'
 import { salvarRegistro } from '../store/registros.js'
 
 export function validarCamposEssenciais(d) {

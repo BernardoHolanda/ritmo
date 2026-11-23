@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import { tiposObjetivo } from '../data/mock.js'
+import { tiposObjetivo } from '../data/constantes.js'
 import { estado, novoId } from '../store/estado.js'
 import { gerarMetas } from '../store/regras.js'
 import { adicionarDias, dataISO } from '../utils/datas.js'

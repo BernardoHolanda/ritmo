@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import CabecalhoTela from '../components/CabecalhoTela.vue'
-import { tiposObjetivo } from '../data/mock.js'
+import { tiposObjetivo } from '../data/constantes.js'
 import { definirObjetivo, objetivoAtivo } from '../controle/C-Objetivo.js'
 import { consultarMetas } from '../controle/C-Metas.js'
 

@@ -3,7 +3,7 @@ import { computed, reactive } from 'vue'
 import OpcoesEscolha from '../components/OpcoesEscolha.vue'
 import RegistroFluxo from '../components/RegistroFluxo.vue'
 import * as controle from '../controle/C-RegistroAlimentacao.js'
-import { categorias, tiposRefeicao } from '../data/mock.js'
+import { categorias, tiposRefeicao } from '../data/constantes.js'
 
 const vazio = () => ({ tipoRefeicao: null, descricao: '', observacao: '' })
 const dados = reactive(vazio())

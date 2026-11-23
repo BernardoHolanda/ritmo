@@ -1,4 +1,4 @@
-import { categorias } from '../data/mock.js'
+import { categorias } from '../data/constantes.js'
 import { estado, novoId } from '../store/estado.js'
 import { atualizarProgresso, gerarMetas } from '../store/regras.js'
 import { dataISO } from '../utils/datas.js'

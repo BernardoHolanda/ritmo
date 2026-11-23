@@ -1,6 +1,6 @@
 <script setup>
 import CabecalhoTela from '../components/CabecalhoTela.vue'
-import { categorias } from '../data/mock.js'
+import { categorias } from '../data/constantes.js'
 
 const descricoes = {
   atividade: 'Modalidade, duração e intensidade',
