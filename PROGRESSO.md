@@ -10,12 +10,10 @@
 - UC03 Definir Objetivo (gera as metas da semana) e UC04 Consultar Metas.
 - UC05 Painel de Progresso Diário (tela Hoje).
 - UC06 a UC09 Registrar Atividade Física, Sono, Alimentação e Humor, já somando pontos e sequência.
+- UC10 Consultar Histórico (tela Histórico, com filtro de período e categoria).
+- UC11 Retrospectiva (resumo da semana, com navegação entre semanas).
+- UC12 Pontuação e Sequência (pontos, sequência atual, recorde e regras de pontuação).
 
 ## Começado, mas falta terminar
 
-- UC10, UC11 e UC12 (Histórico, Retrospectiva, Pontuação e Sequência): a parte de dados já existe,
-  falta fazer as telas. Use `listarPorPeriodo(inicio, fim, idUsuario)` de `src/entidades/E-Registro.js` para buscar
-  os registros (o id do usuário logado vem de `usuarioAtual` em `C-Autenticacao.js`) e `consultar()` de `src/controle/C-PontuacaoSequencia.js` para pontos, sequência e recorde.
-  Os arquivos novos seguem os nomes do Astah: telas `F-TelaHistorico.vue`,
-  `F-TelaRetrospectiva.vue`, `F-TelaPontuacao.vue` e controles `C-Historico.js`, `C-Retrospectiva.js` e a entidade `E-Retrospectiva.js`.
-  O seed não tem registros: para ver algo nas telas, registre alguns antes. Depois é só criar a rota em `src/router.js` e, se quiser, um item em `BarraNavegacao.vue`.
+- Nada por enquanto.
