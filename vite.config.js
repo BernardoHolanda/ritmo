@@ -1,11 +1,14 @@
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
+import { arquivoDeDados } from './servidor/arquivo-dados.js'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    // Lê e grava os dados do app em dados/ritmo.json (endereço /api/dados).
+    arquivoDeDados(),
     // Transforma o app em PWA: dá para "Adicionar à tela inicial" no celular
     // e ele abre em tela cheia, como um app instalado.
     VitePWA({
