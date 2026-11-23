@@ -20,3 +20,8 @@ export function consultar(idUsuario = usuarioAtual.value?.idUsuario) {
   Sequencia.interromper(sequencia)
   return { pontos: pontuacao.total, sequencia: sequencia.atual, recorde: sequencia.recorde }
 }
+
+// Regras que dão pontos hoje (para a tela de pontuação explicar como ganhar).
+export function listarRegras() {
+  return RegraPontuacao.listarAtivas()
+}
