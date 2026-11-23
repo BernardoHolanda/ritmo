@@ -6,6 +6,11 @@ export function obterAtivo(idUsuario) {
   return estado.objetivos.find((o) => o.ativo && o.idUsuario === idUsuario) ?? null
 }
 
+// Todos os objetivos do usuário, inclusive os antigos (a retrospectiva de semanas passadas usa).
+export function listarPorUsuario(idUsuario) {
+  return estado.objetivos.filter((o) => o.idUsuario === idUsuario)
+}
+
 export function criar(idUsuario, tipo) {
   estado.objetivos.push({
     idObjetivo: novoId(),
