@@ -2,16 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { estado } from './store/estado.js'
 
 const routes = [
-  { path: '/entrar', component: () => import('./views/LoginView.vue'), meta: { publica: true } },
-  { path: '/cadastro', component: () => import('./views/CadastroView.vue'), meta: { publica: true } },
-  { path: '/', component: () => import('./views/HojeView.vue') },
-  { path: '/objetivo', component: () => import('./views/ObjetivoView.vue') },
-  { path: '/metas', component: () => import('./views/MetasView.vue') },
+  { path: '/entrar', component: () => import('./views/F-TelaLogin.vue'), meta: { publica: true } },
+  { path: '/cadastro', component: () => import('./views/F-TelaCadastro.vue'), meta: { publica: true } },
+  { path: '/', component: () => import('./views/F-PainelProgresso.vue') },
+  { path: '/objetivo', component: () => import('./views/F-TelaObjetivo.vue') },
+  { path: '/metas', component: () => import('./views/F-TelaMetas.vue') },
   { path: '/registrar', component: () => import('./views/RegistrarView.vue') },
-  { path: '/registrar/atividade', component: () => import('./views/RegistroAtividadeView.vue') },
-  { path: '/registrar/sono', component: () => import('./views/RegistroSonoView.vue') },
-  { path: '/registrar/alimentacao', component: () => import('./views/RegistroAlimentacaoView.vue') },
-  { path: '/registrar/humor', component: () => import('./views/RegistroHumorView.vue') },
+  { path: '/registrar/atividade', component: () => import('./views/F-TelaAtividadeFisica.vue') },
+  { path: '/registrar/sono', component: () => import('./views/F-TelaSono.vue') },
+  { path: '/registrar/alimentacao', component: () => import('./views/F-TelaAlimentacao.vue') },
+  { path: '/registrar/humor', component: () => import('./views/F-TelaHumor.vue') },
   { path: '/:caminho(.*)*', redirect: '/' },
 ]
 
